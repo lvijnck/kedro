@@ -381,7 +381,7 @@ class Pipeline:
     def __add__(self, other: Any) -> Pipeline:
         if not isinstance(other, Pipeline):
             return NotImplemented
-        return Pipeline(set(self._nodes + other._nodes))
+        return Pipeline(set(self.nodes + other.nodes))
 
     def __radd__(self, other: Any) -> Pipeline:
         if isinstance(other, int) and other == 0:
@@ -391,17 +391,17 @@ class Pipeline:
     def __sub__(self, other: Any) -> Pipeline:
         if not isinstance(other, Pipeline):
             return NotImplemented
-        return Pipeline(set(self._nodes) - set(other._nodes))
+        return Pipeline(set(self.nodes) - set(other.nodes))
 
     def __and__(self, other: Any) -> Pipeline:
         if not isinstance(other, Pipeline):
             return NotImplemented
-        return Pipeline(set(self._nodes) & set(other._nodes))
+        return Pipeline(set(self.nodes) & set(other.nodes))
 
     def __or__(self, other: Any) -> Pipeline:
         if not isinstance(other, Pipeline):
             return NotImplemented
-        return Pipeline(set(self._nodes + other._nodes))
+        return Pipeline(set(self.nodes + other.nodes))
 
     def all_inputs(self) -> set[str]:
         """All inputs for all nodes in the pipeline.
